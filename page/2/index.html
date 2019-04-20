@@ -1,0 +1,790 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content><meta name="keywords" content><meta name="author" content="universal42"><meta name="copyright" content="universal42"><title>universal42 acm blog | universal42</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="author-info"><div class="author-info__avatar text-center"><img src="http://img.52z.com/upload/news/image/20180419/20180419051254_75804.jpg"></div><div class="author-info__name text-center">universal42</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">27</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">22</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">15</span></a></div></div></div><nav class="no-bg" id="nav"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">universal42</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="site-info"><div id="site-title">universal42</div><div id="site-sub-title">universal42 acm blog</div></div></nav><div id="content-outer"><div class="layout" id="content-inner"><div class="recent-post-item article-container"><a class="article-title" href="/2019/03/18/e8-93-9d-e6-a1-a5-e6-9d-af-e7-9c-81-e8-b5-9b-2018-c-c-b-9/"> 蓝桥杯省赛-2018-C/C++-B-9		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-03-18</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/蓝桥杯省赛/">蓝桥杯省赛</a></span><div class="content"><h2 id="two-pointers"><a href="#two-pointers" class="headerlink" title="two pointers"></a>two pointers</h2><pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+#define LOCAL
+#define ll long long int
+#define inf 0x3f3f3f3f
+#define mset(a,b) memset(a,b,sizeof(a))
+const int maxn=1e5+5;
+set&lt;int&gt; s;
+vector&lt;int&gt; ts[maxn];
+int n,k,d;
+bool twoPointers(int x){
+    int s=0,t=0,sum=0;
+    int n=ts[x].size();
+    sort(ts[x].begin(),ts[x].end());
+    for(;;){
+        while(t&lt;n&amp;&amp;sum&lt;k){
+            sum++;
+            t++;
+        }
+        if(sum&lt;k) return false;
+        if(ts[x][t-1]-ts[x][s]&lt;d) 
+            return true;
+        else {
+            s++;
+            sum--;
+        }
+    }
+}
+void solve(){
+    cin&gt;&gt;n&gt;&gt;d&gt;&gt;k;
+    for(int i=0;i&lt;n;i++)
+    {
+        int tt,id;
+        cin&gt;&gt;tt&gt;&gt;id;
+        ts[id].push_back(tt);
+        s.insert(id);
+    }
+    int sz=s.size();
+    for(int i=0;i&lt;sz;i++){
+        set&lt;int&gt;::iterator it=s.begin();
+        int x=*it;
+        if(twoPointers(x)){
+            cout&lt;&lt;x&lt;&lt;&quot;\n&quot;;
+        }
+        s.erase(it);
+    }
+}
+int main(){
+#ifdef LOCAL
+    freopen(&quot;in.in&quot;,&quot;r&quot;,stdin);
+#endif
+    solve();
+    return 0;
+}
+</code></pre></div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2019/03/17/e8-93-9d-e6-a1-a5-e6-9d-af-e7-9c-81-e8-b5-9b-2016-c-c-b-9/"> 蓝桥杯省赛-2016-C/C++-B-9		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-03-17</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/蓝桥杯省赛/">蓝桥杯省赛</a></span><div class="content"><h2 id="hash-归位"><a href="#hash-归位" class="headerlink" title="hash 归位"></a>hash 归位</h2><pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+#define LOCAL
+#define ll long long int
+#define inf 0x3f3f3f3f
+#define mset(a,b) memset(a,b,sizeof(a))
+const int maxn=1e4+5;
+int a[maxn],b[maxn];
+/*
+    蓝桥杯省赛-2016-C/C++-B-9
+*/
+void Swap(int &amp;aa,int &amp;bb){
+    int t=aa;
+    aa=bb;
+    bb=t;
+}
+void solve(){
+    int n;
+    int ans=0;
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n;i++) {
+        scanf(&quot;%d&quot;,a+i);
+        b[a[i]]=i;//使用b数组记录 a[i]应该出现在什么位置
+    }
+    for(int i=1;i&lt;=n;i++){
+        if(a[i]!=i){
+            int q=b[i],p=a[i];
+            Swap(a[b[i]],a[i]);
+            b[a[i]]=i;
+            b[p]=q;
+            ans++;
+        }
+    }
+    printf(&quot;%d\n&quot;,ans);
+}
+int main(){
+#ifdef LOCAL
+    freopen(&quot;in.in&quot;,&quot;r&quot;,stdin);
+#endif
+    solve();
+    return 0;
+}
+</code></pre></div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2019/03/17/trashed/"> 蓝桥杯省赛-2016-C/C++-B-7		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-03-17</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/蓝桥杯省赛/">蓝桥杯省赛</a></span><div class="content"><h2 id="状态压缩枚举"><a href="#状态压缩枚举" class="headerlink" title="状态压缩枚举"></a>状态压缩枚举</h2><pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+#define LOCAL
+#define ll long long int
+#define inf 0x3f3f3f3f
+#define mset(a,b) memset(a,b,sizeof(a))
+const int maxn=1e5+5;
+int a[12];
+int g[3][4];
+bool check(int x){
+    int ans=0;
+    while(x){
+        ans+=x&amp;1;
+        x&gt;&gt;=1;
+    }
+    return ans==5;
+}
+void dfs(int i,int j){
+    g[i][j]=0;
+    if(i-1&gt;=0&amp;&amp;g[i-1][j]) dfs(i-1,j);
+    if(i+1&lt;3&amp;&amp;g[i+1][j]) dfs(i+1,j);
+    if(j-1&gt;=0&amp;&amp;g[i][j-1]) dfs(i,j-1);
+    if(j+1&lt;4&amp;&amp;g[i][j+1]) dfs(i,j+1);
+}
+bool f(int z){
+    for(int i=0;i&lt;3;i++){
+        for(int j=0;j&lt;4;j++){
+            g[i][j]=z&amp;1;
+            z&gt;&gt;=1;
+        }
+    }
+    int cnt=0;
+    for(int i=0;i&lt;3;i++){
+        for(int j=0;j&lt;4;j++){
+            if(g[i][j]){
+                dfs(i,j);
+                cnt++;
+            }
+        }
+    }
+    return cnt==1;
+}
+void solve(){
+    int len=pow(2,12);
+    int ans=0;
+    for(int i=0;i&lt;len;i++){
+        if(check(i)&amp;&amp;f(i)){
+            ans++;
+        }
+    }
+    printf(&quot;%d&quot;,ans);
+}
+int main(){
+#ifdef LOCAL
+    freopen(&quot;in.in&quot;,&quot;r&quot;,stdin);
+#endif
+    solve();
+    return 0;
+}
+</code></pre></div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2019/02/19/e5-9f-83-e6-8b-89-e6-89-98-e6-96-af-e7-89-b9-e5-b0-bc-e7-ad-9b-e6-b3-95-e5-9f-83-e6-b0-8f-e6-99-92/"> 埃拉托斯特尼筛法 埃氏晒		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-02-19</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/ACM/">ACM</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/Eratosthenes/">Eratosthenes</a><span class="article-meta__link">-</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/筛法/">筛法</a></span><div class="content"><h4 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h4><p>要得到自然数n以内的全部素数，必须把不大于<br>√n的所有素数的倍数剔除，剩下的就是素数。<br>给出要晒数值的范围n，找出以内的素数。</p>
+<p>先用2去筛，把2标记为素数，并把2的倍数剔除；<br>用3去筛，把3标记为素数，并把3的倍数剔除；<br>考虑一下，此时遍历到4，并且4已经被用2筛的时候给筛掉了，所以就跳过。<br>用5去筛，把5标记为素数，并把5的倍数剔除；<br>···<br>不断重复下去<br>对于可以枚举到的最小数（因为是从2开始向后枚举）<br>因此不用担心枚举到i时，它不是素数。<br>vis[i]表示i是否是素数  </p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int maxn=100000;
+int vis[maxn];
+void Eratosthenes(int n){//给定n的范围
+    int len=sqrt(n+0.5);//避免误差
+    for(int i=2;i&lt;=len;i++){
+        if(!vis[i]){//当前用来筛的数是素数
+            for(int j=i+i;j&lt;=n;j+=i){
+                vis[j]=1;
+            }
+        }
+    }
+}
+</code></pre></div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2019/02/19/e5-85-b3-e7-81-af-e9-97-ae-e9-a2-98-e6-80-bb-e7-bb-93/"> 关灯问题总结		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-02-19</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/题目归类/">题目归类</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/bitmasks/">bitmasks</a><span class="article-meta__link">-</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/状态压缩/">状态压缩</a></span><div class="content"><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个5*5只有0/1的矩阵，1表示灯开着，0表示灯关着，每个灯有唯一的一个开关，按动一个灯的开关时，他的相邻灯盏状态也会改变（上下左右）。问是否存在一个一种方案，使其在n步之内关掉或者打开所有的灯。</p>
+<pre><code>例如：
+10111
+01101
+10111
+10000
+11011
+</code></pre><h4 id="分析一"><a href="#分析一" class="headerlink" title="分析一"></a>分析一</h4><p>首先考虑暴力解法，肯定有一个dfs，递归枚举每个位置是否翻转，到达底界时应用当前方案并更新最值。复杂度O(2^25)(不用计算了，<br>33554432 )，这个复杂度是必定超时的。</p>
+<h4 id="分析二"><a href="#分析二" class="headerlink" title="分析二"></a>分析二</h4><p>依据题目给定的条件，一个开关按动时，他的周围灯的状态也会随之改变。观察第一行，能够改变第一行状态的只有第一行自身改变和第二行改变时的被动改变。假设当前我们要把所有灯打开（全为1），那么对于第一行的一个灯light[0][j]==’0’，想要改变他的状态只有改变他自身和改变light[1][j]这两个位置。假设当前通过改变第一行和第二行的某些位置，使得第一行全为1，那么第一行就可以不用放在考虑范围之内了。接下来我们考虑第二行，能够改变第二行的操作只有改变第二行和第三行，因为第一行已经全是1，所以改变第二行会影响第一行，因此我们只能改变第三行来使第二行全为1。以此类推 。。。<br>假设按照上面的操作我们已经将前4行的状态全部改变为1，对于最后一行，能够改变其状态的只有它的下一行，但是遗憾的是，它本身已经使最后一行了，所以它的0状态是没法被改变的。那么如何检查当前按照这种方案是否已经得到了全是1的状态呢。因为前4行已经全是1，因此只要检查最后一行是否全是1就可以知道按照这种方案得到的状态是否符合题意。<br>到这里，我们可以发现，对于第i行，我们总是改变第i+1行（不包括最后一行）使其全为1。也就是说，第二行改变依赖于第一行的状态，第三行的改变依赖于第二行的状态，···，第i+1行的改变依赖于第i行的状态，可以发现只要第一行的状态确定了，那么其他行如何改变也就确定了。所以，我们只要枚举第一行的灯如何按动，就唯一确定了其他行的按动方案。<br>因此，问题就转换成了枚举第一行的翻转方案，并且应用当前枚举到的方案，向下应用，对于最后一行检查其是否全为1即可。<br>总复杂度O(2^5<em>(5\</em>5+20*5+5))。<br>这里我使用状态来进行枚举（状态压缩）。因为对于一个位置，要么按要么不按，（类似于背包问题的放不放），因此枚举数就是2^5（2*2*2*2*2），对应2进制就是00000-11111。</p>
+<p>需要注意的是，对于一个灯的位置，只有奇数次操作才是有效的，偶数次等于没有操作，这一点也是分析二的前提 。</p>
+<p>相似问题还有POJ的3279.题目类似，可以使用相同解法</p>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+//#define LOCAL
+#define Mod 998244353
+#define ll long long int
+#define mset(a,b) memset(a,b,sizeof(a))
+#define INF 0x3f3f3f3f
+const int maxn=2e3+5;
+char mp[10][10];
+int dx[5]={0,1,-1,0,0};
+int dy[5]={0,0,0,-1,1};
+void turn(int x,int y){
+    for(int i=0;i&lt;5;i++){
+        int a=x+dx[i],b=y+dy[i];
+        if(a&gt;=0&amp;&amp;a&lt;5&amp;&amp;b&gt;=0&amp;&amp;b&lt;5){
+            mp[a][b]^=1;
+        }
+    }
+}
+int dowork(){
+    int ans=INF;
+    for(int i=0;i&lt;1&lt;&lt;5;i++){
+        int res=0;
+        char backup[10][10];
+        memcpy(backup,mp,sizeof(backup));
+        for(int j=0;j&lt;5;j++){
+            if(i&gt;&gt;j&amp;1){
+                res++;
+                turn(0,j);
+            }
+        }
+        for(int i=0;i&lt;4;i++){
+            for(int j=0;j&lt;5;j++){
+                if(mp[i][j]==&apos;0&apos;){
+                    res++;
+                    turn(i+1,j);
+                }
+            }
+        }
+        bool suc=true;
+        for(int j=0;j&lt;5;j++){
+            if(mp[4][j]==&apos;0&apos;){
+                suc=!suc;
+                break;
+            }
+        }
+        ans=suc?min(ans,res):ans;
+        memcpy(mp,backup,sizeof(mp));
+    }
+    if(ans&gt;6) return -1;
+    else return ans;
+
+}
+int main() {
+#ifdef LOCAL
+    freopen(&quot;in.in&quot;,&quot;r&quot;,stdin);
+#endif // LOCAL
+    int t;
+    scanf(&quot;%d&quot;,&amp;t);
+    while(t--){
+        for(int i=0;i&lt;5;i++){
+            scanf(&quot;%s&quot;,mp+i);
+        }
+        printf(&quot;%d\n&quot;,dowork());
+    }
+    return 0;
+}
+</code></pre><p>个人小结：之前对这个问题没有理解透彻，就下决心总结一番。</p>
+</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2019/02/18/cf-1102-d/"> CF-1102-D		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-02-18</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/CODEFORCES/">CODEFORCES</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/greedy/">greedy</a></span><div class="content"><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>不外乎八种情况，0，1，2都大于/小于平均值这两种情况不存在，所以只有六种情况，根据字典序贪心修改一下即可</p>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><pre><code>/*
+    @description: 
+    @author: universal42@163.com
+    @solution: 
+    @chinese problem:
+        给定一个只包含0,1,2的字符串，这样的串称为三元串
+        改动最少次数，使0,1,2的数量相等
+        输出字典序最小的目标字符串
+*/
+#include&lt;queue&gt;
+#include&lt;cmath&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+#define LOCAL
+#define cls ios::sync_with_stdio(false),cin.tie(0),cout.tie(0)
+#define Mod 998244353
+#define ll long long int
+#define mset(a,b) memset(a,b,sizeof(a))
+#define INF 1e9
+const int maxn=2e3+5;
+int main() {
+    cls;
+#ifdef LOCAL
+    freopen(&quot;in.in&quot;,&quot;r&quot;,stdin);
+#endif // LOCAL
+    int n;
+    string s;
+    cin&gt;&gt;n&gt;&gt;s;
+    int cnt[3]={0};
+    int average=n/3;
+    for(int i=0;i&lt;n;i++){
+        cnt[s[i]-&apos;0&apos;]++;
+    }
+
+    if(cnt[0]&gt;=average&amp;&amp;cnt[1]&gt;=average&amp;&amp;cnt[2]&lt;=average){
+        int a=cnt[0]-average;
+        int b=cnt[1]-average;
+        for(int i=n-1;i&gt;=0&amp;&amp;(a||b);i--){
+            if(s[i]==&apos;0&apos;&amp;&amp;a){
+                s[i]=&apos;2&apos;;
+                a--;
+            }
+            else if(s[i]==&apos;1&apos;&amp;&amp;b){
+                s[i]=&apos;2&apos;;
+                b--;
+            }
+        }
+    }
+    else if(cnt[0]&gt;=average&amp;&amp;cnt[1]&lt;=average&amp;&amp;cnt[2]&lt;=average){
+        int a=cnt[0]-average;
+        int c=average-cnt[2];
+        int b=average-cnt[1];
+        for(int i=n-1;i&gt;=0&amp;&amp;c;i--){
+            if(s[i]==&apos;0&apos;){
+                s[i]=&apos;2&apos;;
+                c--;
+            }
+        }
+        for(int i=n-1;i&gt;=0&amp;&amp;b;i--){
+            if(s[i]==&apos;0&apos;){
+                s[i]=&apos;1&apos;;
+                b--;
+            }
+        }
+    }
+    else if(cnt[0]&lt;=average&amp;&amp;cnt[1]&gt;=average&amp;&amp;cnt[2]&lt;=average){
+        int a=average-cnt[0];
+        int c=average-cnt[2];
+        for(int i=0;i&lt;n&amp;&amp;a;i++){
+            if(s[i]==&apos;1&apos;){
+                s[i]=&apos;0&apos;;
+                a--;
+            }
+        }
+        for(int i=n-1;i&gt;=0&amp;&amp;c;i--){
+            if(s[i]==&apos;1&apos;){
+                s[i]=&apos;2&apos;;
+                c--;
+            }
+        }
+    }
+    else if(cnt[0]&lt;=average&amp;&amp;cnt[1]&gt;=average&amp;&amp;cnt[2]&gt;=average){
+        int b=cnt[1]-average;
+        int c=cnt[2]-average;
+        for(int i=0;i&lt;n&amp;&amp;(b||c);i++){
+            if(s[i]==&apos;1&apos;&amp;&amp;b){
+                s[i]=&apos;0&apos;;
+                b--;
+            }
+            else if(s[i]==&apos;2&apos;&amp;&amp;c){
+                s[i]=&apos;0&apos;;
+                c--;
+            }
+        }
+    }
+    else if(cnt[0]&lt;=average&amp;&amp;cnt[1]&lt;=average&amp;&amp;cnt[2]&gt;=average){
+        int a=average-cnt[0];
+        int b=average-cnt[1];
+        for(int i=0;i&lt;n&amp;&amp;a;i++){
+            if(s[i]==&apos;2&apos;){
+                s[i]=&apos;0&apos;;
+                a--;
+            }
+        }
+        for(int i=0;i&lt;n&amp;&amp;b;i++){
+            if(s[i]==&apos;2&apos;){
+                s[i]=&apos;1&apos;;
+                b--;
+            }
+        }
+    }
+    else if(cnt[0]&gt;=average&amp;&amp;cnt[1]&lt;=average&amp;&amp;cnt[2]&gt;=average){
+        int a=cnt[0]-average;
+        int c=cnt[2]-average;
+        for(int i=n-1;i&gt;=0&amp;&amp;a;i--){
+            if(s[i]==&apos;0&apos;){
+                s[i]=&apos;1&apos;;
+                a--;
+            }
+        }
+        for(int i=0;i&lt;n&amp;&amp;c;i++){
+            if(s[i]==&apos;2&apos;){
+                s[i]=&apos;1&apos;;
+                c--;
+            }
+        }
+    }
+    cout&lt;&lt;s&lt;&lt;endl;
+    return 0;
+}
+</code></pre></div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2019/02/18/cf-1102-e/"> CF-1102-E		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-02-18</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/CODEFORCES/">CODEFORCES</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/combinatorics/">combinatorics</a><span class="article-meta__link">-</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/segment/">segment</a></span><div class="content"><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>如果 ai=aj,且bi=bj时，可知b[i]=b[i+1]=…=b[j]，对b来说 [i,j] 这个区间的值是一致的<br>用l[x],r[x]分别代表，x这个值的边界位置（也就是最左和最右位置） 则[l[x],r[x]]这个区间是一致的<br>如果两个线段相交，那么相交的两个线段必然都一致<br>设y是不相交线段的个数，ans是解<br>那么 ans=2^y%mod</p>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><pre><code>/*
+    @description: 
+    @author: universal42@163.com
+    @solution: 
+        后一项等于当前项，或者比当前项大于1
+        b序列使一个单调递增的序列
+*/
+#include&lt;map&gt;
+#include&lt;queue&gt;
+#include&lt;cmath&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+#define LOCAL
+#define cls ios::sync_with_stdio(false),cin.tie(0),cout.tie(0)
+#define Mod 998244353
+#define ll long long int
+#define mset(a,b) memset(a,b,sizeof(a))
+#define INF 1e9
+const int maxn=2e5+5;
+int a[maxn];
+int n;
+map&lt;int,int&gt; r;//记录数字x最右边位置
+ll pow_mod(ll a,ll b){//a^b%mod
+    ll res=1;
+    while(b){
+        if(b&amp;1) res=(res*a)%Mod;
+        b&gt;&gt;=1;
+        a=a*a%Mod;
+    }
+    return res;
+}
+ll getSegNum(){//获取不相交线段个数
+    /*
+        初始化线段个数为n，如果两个线段相交，那么用n减去  相交线段的最右边的线段的右端点减去第一个线段的左端点再加一 ，就是不相交线段的个数 
+    */
+    int ans=n;
+    int last=-1;
+    int start=0;
+    for(int i=0;i&lt;n;i++){
+        if(r[a[i]]!=i){//右边端点不是自身，也就是说这个值不是单点
+            last=r[a[i]];
+            start=i;
+            for(int j=start+1;j&lt;=last;j++){
+                if(r[a[j]]&gt;r[a[start]]){//该区间相交
+                    start=j;
+                    last=r[a[j]];
+                }
+            }
+            ans=ans-last+i;
+            i=last;
+        }
+    }
+    return ans;
+}
+int main() {
+    //cls;
+#ifdef LOCAL
+    freopen(&quot;in.in&quot;,&quot;r&quot;,stdin);
+#endif // LOCAL
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=0;i&lt;n;i++){
+        scanf(&quot;%d&quot;,&amp;a[i]);
+        r[a[i]]=i;
+    }
+    ll cnt=getSegNum();
+    ll ans=pow_mod(2,cnt-1);
+    printf(&quot;%lld\n&quot;,ans);
+    return 0;
+}
+</code></pre></div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2019/02/17/cf-1102-b/"> CF-1102-B		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-02-17</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/CODEFORCES/">CODEFORCES</a></span><div class="content"><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>从1开始对元素染色，如果某个元素当前颜色已经染过了，那么寻找一个没有染过的颜色即可。</p>
+<pre><code>/*
+    @description: cf-1102-B
+    @author: universal42@163.com
+    @solution: greedy
+*/
+#include&lt;queue&gt;
+#include&lt;cmath&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+#define LOCAL
+#define cls ios::sync_with_stdio(false),cin.tie(0),cout.tie(0)
+#define Mod 998244353
+#define ll long long int
+#define mset(a,b) memset(a,b,sizeof(a))
+#define INF 1e9
+const int maxn=5000+5;
+string yes=&quot;YES\n&quot;;
+string no=&quot;NO\n&quot;;
+int a[maxn];
+bool v[maxn][maxn];//元素a[i],颜色j是否出现过
+int num[maxn];
+int ans[maxn];
+int main() {
+    cls;
+#ifdef LOCAL
+    freopen(&quot;in.in&quot;,&quot;r&quot;,stdin);
+#endif // LOCAL
+    int n,k;
+    cin&gt;&gt;n&gt;&gt;k;
+    bool flag=0;
+    for(int i=0;i&lt;n;i++) {
+        cin&gt;&gt;a[i];
+        num[a[i]]++;
+        if(num[a[i]]&gt;k) flag=true;
+    }
+    if(flag){
+        cout&lt;&lt;no;
+        return 0;
+    }
+    int color=1;
+    for(int i=0;i&lt;n;i++){
+        int j=0;
+        while(v[a[i]][color]&amp;&amp;j&lt;k) {
+            color=color%k+1;
+            j++;
+        }
+        v[a[i]][color]=true;
+        ans[i]=color;
+        color=color%k+1;
+        j=0;
+    }
+    cout&lt;&lt;yes;
+    for(int i=0;i&lt;n;i++){
+        if(i) cout&lt;&lt;&quot; &quot;;
+        cout&lt;&lt;ans[i];
+    }
+    cout&lt;&lt;endl;
+    return 0;
+}
+</code></pre></div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2019/02/17/cf-1107-d/"> CF-1107-D		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-02-17</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/CODEFORCES/">CODEFORCES</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/brute-force/">brute force</a><span class="article-meta__link">-</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/math/">math</a></span><div class="content"><p>先贴代码，后面证明</p>
+<pre><code>/*
+    @description: cf-1107-D
+    @author: universal42@163.com
+    @solution: 暴力
+*/
+#include&lt;queue&gt;
+#include&lt;cmath&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+#define LOCAL
+#define cls ios::sync_with_stdio(false),cin.tie(0),cout.tie(0)
+#define Mod 998244353
+#define ll long long int
+#define mset(a,b) memset(a,b,sizeof(a))
+#define INF 1e9
+const int maxn=5200+5;
+int a[maxn][maxn];
+int n;
+void debug(){
+    for(int i=1;i&lt;=n;i++){
+        for(int j=1;j&lt;=n;j++) cout&lt;&lt;a[i][j]&lt;&lt;&quot; &quot;;
+        cout&lt;&lt;endl;
+    }
+}
+bool check(int x){//判断x*x的子矩阵内所有元素是否相等,x是子矩阵长
+    for(int i=1;i&lt;=n;i+=x){
+        for(int j=1;j&lt;=n;j+=x){
+            int t=a[i][j];
+            for(int k=0;k&lt;x;k++){
+                for(int l=0;l&lt;x;l++) if(a[i+k][j+l]!=t) return 0;
+            }
+        }
+    }
+    return 1;
+}
+int main() {
+    cls;
+#ifdef LOCAL
+    freopen(&quot;in.in&quot;,&quot;r&quot;,stdin);
+#endif // LOCAL
+    cin&gt;&gt;n;
+    string s;
+    for(int i=1;i&lt;=n;i++){
+        //16进制转换为二进制
+        cin&gt;&gt;s;
+        int t;
+        for(int j=n;j&gt;=1;j-=4){
+            t=(isdigit(s[(j-1)/4])?s[(j-1)/4]-&apos;0&apos;:s[(j-1)/4]-&apos;A&apos;+10);
+            for(int l=0;l&lt;4;l++){
+                a[i][j-l]=(t&gt;&gt;l)&amp;1;
+            }
+        }
+    }
+    //debug();
+    //暴力解法
+    for(int i=n;i&gt;1;i--){
+        if(n%i==0){//是其因子
+            if(check(i)){//x==i
+                cout&lt;&lt;i&lt;&lt;endl;
+                return 0;
+            }
+        }
+    }
+    cout&lt;&lt;1&lt;&lt;endl;
+    return 0;
+}
+</code></pre></div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2019/02/16/hdu-1043/"> hdu-1043		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-02-16</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/HDU/">HDU</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/bfs/">bfs</a><span class="article-meta__link">-</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/康拓编码/">康拓编码</a><span class="article-meta__link">-</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/打表/">打表</a></span><div class="content"><h3 id="贴出代码，先鸽了，学会了A-再来更"><a href="#贴出代码，先鸽了，学会了A-再来更" class="headerlink" title="贴出代码，先鸽了，学会了A*再来更"></a>贴出代码，先鸽了，学会了A*再来更</h3><pre><code>/*
+    @description: hdu-1043
+    @author: universal42@163.com
+    @solution: bfs 康拓展开  c++能过
+*/
+#include&lt;queue&gt;
+#include&lt;cmath&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+#define LOCAL
+#define cls ios::sync_with_stdio(false),cin.tie(0),cout.tie(0)
+#define Mod 998244353
+#define ll long long int
+#define mset(a,b) memset(a,b,sizeof(a))
+#define INF 1e9
+const int maxn=362881;
+int fac[]={1,1,2,6,24,120,720,5040,40320};//记录阶乘
+bool vis[maxn];
+char dir[]={&apos;d&apos;,&apos;u&apos;,&apos;r&apos;,&apos;l&apos;};
+const string err=&quot;unsolvable&quot;;
+int dx[]={-1,1,0,0};//上下左右
+int dy[]={0,0,-1,1};
+char x;
+char T_state[9];
+int T_cantor;
+int T_zero;
+char RA[9];
+int RA_zero;
+string path[maxn];
+struct node{
+    int zero;//记录0/x的位置
+    string path;//记录路径
+    int cantor;//康拓编码
+    node(){};
+    node(int _zero,string _path,int _cantor):zero(_zero),path(_path),cantor(_cantor){};
+}st;
+queue&lt;node&gt; q;
+int Cantor(char *s){//对给定的状态求康拓展开编码
+    int ct=0;
+    for(int i=0;i&lt;9;i++){
+        int cnt=0;
+        for(int j=i+1;j&lt;9;j++) if(s[i]&gt;s[j]) cnt++;
+        ct+=(cnt*fac[9-i-1]);
+    }
+    return ct;
+}
+void CantorReverse(int x,char *s){//给定康拓编码，返回状态数组
+    int vst[20]={0};
+    for(int i=0;i&lt;9;i++){
+        int t=x/fac[9-i-1];
+        int j;
+        for(j=0;j&lt;9;j++){
+            if(!vst[j]){
+                if(t==0) break;
+                t--;
+            }
+        }
+        s[i]=&apos;0&apos;+j;
+        vst[j]=1;
+        x%=fac[9-i-1];
+    }
+}
+void init(){
+    for(int i=0;i&lt;8;i++) T_state[i]=i+1+&apos;0&apos;;
+    T_state[8]=&apos;0&apos;;
+    T_zero=8;//记录初始状态0的位置
+    T_cantor=Cantor(T_state);
+}
+void Swap(char &amp;a,char &amp;b){
+    char t=a;
+    a=b;
+    b=t;
+}
+void bfs(){
+    mset(vis,false);
+    st.cantor=T_cantor,st.zero=T_zero,st.zero=T_zero,vis[st.cantor]=1;
+    q.push(st);
+    node f;
+    char tmp[9];
+    char na[9];//获取当前Cantor值的对应数组
+    while(!q.empty()){
+        f=q.front();
+        q.pop();
+        CantorReverse(f.cantor,na);//获取当前结点对应的状态数组
+        int fx=f.zero/3,fy=f.zero%3;
+        if(fx&gt;=1){//0可以上移
+            Swap(na[fx*3+fy],na[(fx-1)*3+fy]);
+            int val=Cantor(na);
+            if(!vis[val]){
+                vis[val]=1;
+                q.push(node((fx-1)*3+fy,f.path+&apos;d&apos;,val));
+                path[val]=f.path+&apos;d&apos;;
+            }
+            Swap(na[fx*3+fy],na[(fx-1)*3+fy]);
+        }
+        if(fx&lt;=1){//可以下移
+            Swap(na[fx*3+fy],na[(fx+1)*3+fy]);
+            int val=Cantor(na);
+            if(!vis[val]){
+                vis[val]=1;
+                q.push(node((fx+1)*3+fy,f.path+&apos;u&apos;,val));//下面的数上移
+                path[val]=f.path+&apos;u&apos;;
+            }
+            Swap(na[fx*3+fy],na[(fx+1)*3+fy]);
+        }
+        if(fy&gt;=1){//可以左移
+            Swap(na[fx*3+fy],na[fx*3+fy-1]);
+            int val=Cantor(na);
+            if(!vis[val]){
+                vis[val]=1;
+                q.push(node(fx*3+fy-1,f.path+&apos;r&apos;,val));//左边的数右移
+                path[val]=f.path+&apos;r&apos;;
+            }
+            Swap(na[fx*3+fy],na[fx*3+fy-1]);
+        }
+        if(fy&lt;=1){//可以左移
+            Swap(na[fx*3+fy],na[fx*3+fy+1]);
+            int val=Cantor(na);
+            if(!vis[val]){
+                vis[val]=1;
+                q.push(node(fx*3+fy+1,f.path+&apos;l&apos;,val));//右边的数左移
+                path[val]=f.path+&apos;l&apos;;
+            }
+            Swap(na[fx*3+fy],na[fx*3+fy+1]);
+        }
+    }
+}
+int main() {
+    //cls;
+#ifdef LOCAL
+    freopen(&quot;in.in&quot;,&quot;r&quot;,stdin);
+#endif // LOCAL
+    init();
+    bfs();
+    while(cin&gt;&gt;x){
+        if(x==&apos;x&apos;){
+            RA[0]=&apos;0&apos;;
+            RA_zero=0;
+        }
+        else RA[0]=x;
+        for(int i=1;i&lt;=8;i++){
+            cin&gt;&gt;x;
+            if(x==&apos;x&apos;){
+                RA[i]=&apos;0&apos;;
+                RA_zero=i;
+            }
+            else RA[i]=x;
+        }
+        int val=Cantor(RA);
+        if(vis[val]){
+            for(int i=path[val].length()-1;i&gt;=0;i--) cout&lt;&lt;path[val][i];
+            cout&lt;&lt;endl;
+        }
+        else cout&lt;&lt;err&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre></div><hr></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fa fa-chevron-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2019 By universal42</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://universal4s.github.io">blog</a>!</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span><span></span></span><span class="footer-separator">|</span><span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script></body></html>
