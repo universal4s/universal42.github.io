@@ -7,9 +7,12 @@
     error: 'Copy error',
     noSupport: 'The browser does not support'
   }
-} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="author-info"><div class="author-info__avatar text-center"><img src="http://img.52z.com/upload/news/image/20180419/20180419051254_75804.jpg"></div><div class="author-info__name text-center">universal42</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">27</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">22</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">15</span></a></div></div></div><nav class="no-bg" id="nav"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">universal42</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="site-info"><div id="site-title">universal42</div><div id="site-sub-title">universal42 acm blog</div></div></nav><div id="content-outer"><div class="layout" id="content-inner"><div class="recent-post-item article-container"><a class="article-title" href="/2019/02/15/hdu-2612/"> HDU-2612		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-02-15</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/HDU/">HDU</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/bfs/">bfs</a></span><div class="content"><h4 id="尝试思路"><a href="#尝试思路" class="headerlink" title="尝试思路"></a>尝试思路</h4><p>首先考虑到有很多‘@’点，所以很容易想到的是 bfs 每个‘@’点，从中取出最小值即可。但是假设图中有很多‘@’点，那么必定超时(200^4);</p>
-<h4 id="正确思路"><a href="#正确思路" class="headerlink" title="正确思路"></a>正确思路</h4><p>从’Y’、’M’开始 bfs，得到与每个‘@’的距离，再遍历每个‘@’得出最小值即可.</p>
-<h4 id="给出代码"><a href="#给出代码" class="headerlink" title="给出代码"></a>给出代码</h4><pre><code>/*
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="author-info"><div class="author-info__avatar text-center"><img src="http://img.52z.com/upload/news/image/20180419/20180419051254_75804.jpg"></div><div class="author-info__name text-center">universal42</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">27</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">22</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">15</span></a></div></div></div><nav class="no-bg" id="nav"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">universal42</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="site-info"><div id="site-title">universal42</div><div id="site-sub-title">universal42 acm blog</div></div></nav><div id="content-outer"><div class="layout" id="content-inner"><div class="recent-post-item article-container"><a class="article-title" href="/2019/02/15/hdu-2612/"> HDU-2612		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-02-15</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/HDU/">HDU</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/bfs/">bfs</a></span><div class="content"><h4 id="尝试思路"><a class="markdownIt-Anchor" href="#尝试思路"></a> 尝试思路</h4>
+<p>首先考虑到有很多’@‘点，所以很容易想到的是 bfs 每个’@‘点，从中取出最小值即可。但是假设图中有很多’@'点，那么必定超时(200^4);</p>
+<h4 id="正确思路"><a class="markdownIt-Anchor" href="#正确思路"></a> 正确思路</h4>
+<p>从’Y’、‘M’开始 bfs，得到与每个’@‘的距离，再遍历每个’@'得出最小值即可.</p>
+<h4 id="给出代码"><a class="markdownIt-Anchor" href="#给出代码"></a> 给出代码</h4>
+<pre><code>/*
     @description: hdu-2612
     @author: universal42@163.com
     @solution: bfs
@@ -54,13 +57,13 @@ void bfsM(int x,int y){//从x y开始统计到所有@的距离
     while(!q.empty()){
         f=q.front();
         q.pop();
-        if(mp[f.x][f.y]==&apos;@&apos;){
+        if(mp[f.x][f.y]=='@'){
             dis_m[f.x][f.y]=f.step;
         }
         for(int i=0;i&lt;4;i++){
             int fx=f.x+dx[i];
             int fy=f.y+dy[i];
-            if(fx&gt;=0&amp;&amp;fx&lt;n&amp;&amp;fy&gt;=0&amp;&amp;fy&lt;m&amp;&amp;!vis[fx][fy]&amp;&amp;mp[fx][fy]!=&apos;#&apos;){
+            if(fx&gt;=0&amp;&amp;fx&lt;n&amp;&amp;fy&gt;=0&amp;&amp;fy&lt;m&amp;&amp;!vis[fx][fy]&amp;&amp;mp[fx][fy]!='#'){
                 vis[fx][fy]=1;
                 tmp.x=fx;
                 tmp.y=fy;
@@ -69,7 +72,7 @@ void bfsM(int x,int y){//从x y开始统计到所有@的距离
             }
         }
     }
-
+    
 }
 void bfsY(int x,int y){//从x y开始统计到所有@的距离
     mset(vis,0);
@@ -84,13 +87,13 @@ void bfsY(int x,int y){//从x y开始统计到所有@的距离
     while(!q.empty()){
         f=q.front();
         q.pop();
-        if(mp[f.x][f.y]==&apos;@&apos;){
+        if(mp[f.x][f.y]=='@'){
             dis_y[f.x][f.y]=f.step;
         }
         for(int i=0;i&lt;4;i++){
             int fx=f.x+dx[i];
             int fy=f.y+dy[i];
-            if(fx&gt;=0&amp;&amp;fx&lt;n&amp;&amp;fy&gt;=0&amp;&amp;fy&lt;m&amp;&amp;!vis[fx][fy]&amp;&amp;mp[fx][fy]!=&apos;#&apos;){
+            if(fx&gt;=0&amp;&amp;fx&lt;n&amp;&amp;fy&gt;=0&amp;&amp;fy&lt;m&amp;&amp;!vis[fx][fy]&amp;&amp;mp[fx][fy]!='#'){
                 vis[fx][fy]=1;
                 tmp.x=fx;
                 tmp.y=fy;
@@ -100,7 +103,7 @@ void bfsY(int x,int y){//从x y开始统计到所有@的距离
         }
 
     }
-
+    
 }
 int main() {
     cls;
@@ -111,14 +114,14 @@ int main() {
         for(int i=0;i&lt;n;i++){
             cin&gt;&gt;mp[i];
         }
-
+        
         for(int i=0;i&lt;n;i++)
             for(int j=0;j&lt;m;j++){
-                if(mp[i][j]==&apos;Y&apos;){
+                if(mp[i][j]=='Y'){
                     yx=i;
                     yy=j;
                 }
-                else if(mp[i][j]==&apos;M&apos;){
+                else if(mp[i][j]=='M'){
                     mx=i;
                     my=j;
                 }
@@ -130,7 +133,7 @@ int main() {
         int ans=INF;
         for(int i=0;i&lt;n;i++){
             for(int j=0;j&lt;m;j++){
-                if(mp[i][j]==&apos;@&apos;&amp;&amp;dis_m[i][j]!=-1&amp;&amp;dis_y[i][j]!=-1){
+                if(mp[i][j]=='@'&amp;&amp;dis_m[i][j]!=-1&amp;&amp;dis_y[i][j]!=-1){
                     ans=min(ans,dis_m[i][j]+dis_y[i][j]);
                 }
             }
@@ -138,10 +141,13 @@ int main() {
         cout&lt;&lt;ans*11&lt;&lt;endl;
     }
     return 0;
-}
-</code></pre></div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2019/02/15/poj-3087/"> POJ-3087		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-02-15</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/POJ/">POJ</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/brute-force/">brute force</a></span><div class="content"><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定两个长为len的字符串s、t和长为2*len的串g，问是否存在按制定规则组合s、t得到g，如果s，t不能组成g，则将g的前后半部分分别赋予s、t，重复以上过程。如果可以得到，这输出变换步长，如果不能，则输出-1.</p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>暴力就完事了，注意判重</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>#include&lt;map&gt;
+}</code></pre>
+</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2019/02/15/poj-3087/"> POJ-3087		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-02-15</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/POJ/">POJ</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/brute-force/">brute force</a></span><div class="content"><h4 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h4>
+<p>给定两个长为len的字符串s、t和长为2*len的串g，问是否存在按制定规则组合s、t得到g，如果s，t不能组成g，则将g的前后半部分分别赋予s、t，重复以上过程。如果可以得到，这输出变换步长，如果不能，则输出-1.</p>
+<h4 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路</h4>
+<p>暴力就完事了，注意判重</p>
+<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h4>
+<pre><code>#include&lt;map&gt;
 #include&lt;queue&gt;
 #include&lt;cmath&gt;
 #include&lt;cstdio&gt;
@@ -211,8 +217,9 @@ int main() {
         cout&lt;&lt;i&lt;&lt;&quot; &quot;&lt;&lt;work()&lt;&lt;endl;
     }
     return 0;
-}
-</code></pre></div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2019/02/14/poj-3126/"> POJ-3126		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-02-14</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/POJ/">POJ</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/bfs/">bfs</a><span class="article-meta__link">-</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/模拟/">模拟</a></span><div class="content"><h3 id="问题描述：略"><a href="#问题描述：略" class="headerlink" title="问题描述：略"></a>问题描述：略</h3><p><strong>思路</strong>： 简单的bfs，从初始位置开始，按位暴力从当前状态出发的所有素数状态，注意去重。这里因为数字不大于9999，所以我使用了vis[10000]来判断重复。</p>
+}</code></pre>
+</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2019/02/14/poj-3126/"> POJ-3126		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-02-14</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/POJ/">POJ</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/bfs/">bfs</a><span class="article-meta__link">-</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/模拟/">模拟</a></span><div class="content"><h3 id="问题描述略"><a class="markdownIt-Anchor" href="#问题描述略"></a> 问题描述：略</h3>
+<p><strong>思路</strong>： 简单的bfs，从初始位置开始，按位暴力从当前状态出发的所有素数状态，注意去重。这里因为数字不大于9999，所以我使用了vis[10000]来判断重复。</p>
 <p>贴出代码</p>
 <pre><code>#include&lt;queue&gt;
 #include&lt;cmath&gt;
@@ -247,7 +254,7 @@ bool isPrime(int x){
 int getInt(char *s){
     int x=0;
     for(int i=3;i&gt;=0;i--){
-        x=x*10+s[i]-&apos;0&apos;;
+        x=x*10+s[i]-'0';
     }
     return x;
 }
@@ -268,13 +275,13 @@ int bfs(){
         if(f.x==m) return f.step;
         int x=f.x;
         for(int i=0;i&lt;4;i++){
-            mp[i]=x%10+&apos;0&apos;;//取最后一位
+            mp[i]=x%10+'0';//取最后一位
             x/=10;
         }
         node ps;
         strcpy(tmp,mp);
         for(int i=0;i&lt;10;i++){//个位变换 0~9
-            tmp[0]=&apos;0&apos;+i;
+            tmp[0]='0'+i;
             int tp=getInt(tmp);
             if(isPrime(tp)&amp;&amp;!vis[tp]){
                 vis[tp]=1;
@@ -285,7 +292,7 @@ int bfs(){
         }
         strcpy(tmp,mp);
         for(int i=0;i&lt;10;i++){//十位变换 0~9
-            tmp[1]=&apos;0&apos;+i;
+            tmp[1]='0'+i;
             int tp=getInt(tmp);
             if(isPrime(tp)&amp;&amp;!vis[tp]){
                 vis[tp]=1;
@@ -296,7 +303,7 @@ int bfs(){
         }
         strcpy(tmp,mp);
         for(int i=0;i&lt;10;i++){//百位变换 0~9
-            tmp[2]=&apos;0&apos;+i;
+            tmp[2]='0'+i;
             int tp=getInt(tmp);
             if(isPrime(tp)&amp;&amp;!vis[tp]){
                 vis[tp]=1;
@@ -307,7 +314,7 @@ int bfs(){
         }
         strcpy(tmp,mp);
         for(int i=1;i&lt;10;i++){//千位变换 1~9
-            tmp[3]=&apos;0&apos;+i;
+            tmp[3]='0'+i;
             int tp=getInt(tmp);
             if(isPrime(tp)&amp;&amp;!vis[tp]){
                 vis[tp]=1;
@@ -334,185 +341,29 @@ int main() {
     }
     return 0;
 }
-</code></pre><p>睡前最后一题，可以开心的睡觉去了</p>
-</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2019/02/14/e5-ba-b7-e6-8b-93-e5-b1-95-e5-bc-80/"> 康拓展开		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-02-14</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/数学公式/">数学公式</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/状态压缩/">状态压缩</a><span class="article-meta__link">-</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/哈希/">哈希</a><span class="article-meta__link">-</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/数学/">数学</a></span><div class="content"><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>康拓展开是一个全排列到一个自然数的双射，常用于构建哈希表时的空间压缩，康拓展开的实质是计算当前排列在所有由小到大全排列中的顺序，因此是可逆的。</p>
-<h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>X=a_n(n-1)!+a_{n-1}(n-2)!+a_{n-2}(n-3)!+···+a_2(1)!+a_1(0!)</p>
+</code></pre>
+<p>睡前最后一题，可以开心的睡觉去了</p>
+</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2019/02/14/e5-ba-b7-e6-8b-93-e5-b1-95-e5-bc-80/"> 康拓展开		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-02-14</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/数学公式/">数学公式</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/状态压缩/">状态压缩</a><span class="article-meta__link">-</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/哈希/">哈希</a><span class="article-meta__link">-</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/数学/">数学</a></span><div class="content"><h4 id="介绍"><a class="markdownIt-Anchor" href="#介绍"></a> 介绍</h4>
+<p>康拓展开是一个全排列到一个自然数的双射，常用于构建哈希表时的空间压缩，康拓展开的实质是计算当前排列在所有由小到大全排列中的顺序，因此是可逆的。</p>
+<h4 id="定义"><a class="markdownIt-Anchor" href="#定义"></a> 定义</h4>
+<p>X=a_n(n-1)!+a_{n-1}(n-2)!+a_{n-2}(n-3)!+···+a_2(1)!+a_1(0!)</p>
 <p>其中 a[i]为整数，并且0&lt;=a[i]&lt;i,代表元素arr[i]在还未出现的数字中排第几，简而言之，就是后面与多少个数小于arr[i]</p>
 <p>康拓展开是可逆的，若求排列中第x个数的排列，则先将x-1，之后按照公式依次除以(n-i)!</p>
-</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2019/02/14/e6-95-b0-e5-ad-a6-e5-85-ac-e5-bc-8f-e6-96-af-e7-89-b9-e7-81-b5-e5-85-ac-e5-bc-8f/"> 数学公式-斯特灵公式		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-02-14</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/数学公式/">数学公式</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/数学/">数学</a><span class="article-meta__link">-</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/数论/">数论</a><span class="article-meta__link">-</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/阶乘/">阶乘</a></span><div class="content"><h1 id="斯特灵-Stirling-公式"><a href="#斯特灵-Stirling-公式" class="headerlink" title="斯特灵   Stirling 公式"></a>斯特灵   Stirling 公式</h1><h2 id="公式介绍"><a href="#公式介绍" class="headerlink" title="公式介绍"></a>公式介绍</h2><p>斯特灵公式是一条用来取n阶乘近似值的数学公式</p>
-<p>证明：略  </p>
+</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2019/02/14/e6-95-b0-e5-ad-a6-e5-85-ac-e5-bc-8f-e6-96-af-e7-89-b9-e7-81-b5-e5-85-ac-e5-bc-8f/"> 数学公式-斯特灵公式		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-02-14</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/数学公式/">数学公式</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/数学/">数学</a><span class="article-meta__link">-</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/数论/">数论</a><span class="article-meta__link">-</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/阶乘/">阶乘</a></span><div class="content"><h1 id="斯特灵-stirling-公式"><a class="markdownIt-Anchor" href="#斯特灵-stirling-公式"></a> 斯特灵   Stirling 公式</h1>
+<h2 id="公式介绍"><a class="markdownIt-Anchor" href="#公式介绍"></a> 公式介绍</h2>
+<p>斯特灵公式是一条用来取n阶乘近似值的数学公式</p>
+<p>证明：略</p>
 <pre><code>    ln(n!)=ln 1+ln 2+···+ln n
 
           ≈n ln(n)-n+1
 
-len=((0.5*log(2*pi*x)+x*log(x) - x)/log(10))
-</code></pre></div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2018/10/22/dynamic-programing/"> [DP] LIS		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-10-22</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/Dynamic-Programing/">Dynamic Programing</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/DP/">DP</a></span><div class="content"><p>[infobox title=”问题描述”] 在计算机科学中，最长递增子序列(longest increasing subsequence,简称LIS)问题是指在一个给定的数值序列中，找到一个子序列，使得这个子序列元素的数值依次递增，并且这个子序列的长度尽可能大。注意：最长递增子序列中的元素在原序列中不一定是连续的。 解决最长递增子序列问题的算法最低要求O(nlogn)。 [/infobox]</p>
-<hr>
-<p>[infobox title=”问题举例”] 对于以下的原始序列 <code>0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15</code> 最长递增子序列为 <code>0, 2, 6, 9, 11, 15.</code> [success] 值得注意的是原始序列的最长递增子序列并不一定唯一，对于该原始序列，实际上还有以下两个最长递增子序列</p>
-<p>0, 4, 6, 9, 11, 15 或 0, 4, 6, 9, 13, 15</p>
-<p>[/success] [/infobox] [infobox title=”解决思想”] 令a[0…n-1]为输入数组，lis[i]是索引在i处结束的LIS的长度，使得a[i]是LIS的最后一个元素。 然后，用递归法可以写出L(i)：</p>
-<ul>
-<li>L(i)=1+max(L[j])  (0&lt;j&lt;i and a[j]&lt;a[i])</li>
-<li>L(1)=1</li>
-</ul>
-<p>为了找出所给数组的LIS，我们给出max(L(i)) 即可(0&lt;i&lt;n)。 这里，因为可以使用子问题的解来解决主要问题，因此我们可以看到LIS问题具有最优子结构的属性。 [/infobox]</p>
-<hr>
-<p>[title]下面给出LIS的递归实现[/title] <a href="https://ideone.com/PzmKUb" target="_blank" rel="noopener">[success]-&gt; 点击链接 查看代码 LIS recursive [/success]</a></p>
-<hr>
-<p>[danger]递归难免会出现重复子问题，一般，我们会用递推代替递归，事实证明，递推的效率高于递归。[/danger] [title]下面给出LIS的递推版本[/title] [success]-&gt; 点击链接查看源码 <a href="https://ideone.com/HygUhu" target="_blank" rel="noopener">LIS no recursive</a>[/success]</p>
-</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2018/08/03/test/"> ACM/ICPC 数论 素数		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-08-03</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/Mathematical-Algorithms/">Mathematical Algorithms</a></span><div class="content"><h1 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h1><pre><code>素数，又叫质数，除了1和它本身以外不再有其他的因数。
-</code></pre><h1 id="代码模板"><a href="#代码模板" class="headerlink" title="代码模板"></a>代码模板</h1><pre><code>1） 时间复杂度是O(n)
-</code></pre><hr>
-<p>bool prime(int x){//判断x是不是质数，是返回true，不是返回false</p>
-<pre><code>if(x &lt;= 1) return false;
-
-for(int i = 2; i &lt; x; i ++){
-
-    if(x % i == 0) return false;
-
-}
-
-return true;
-</code></pre><p>}</p>
-<pre><code>2）时间复杂度O( √n)
-</code></pre><hr>
-<p>bool prime(int x){//判断x是不是质数，是返回true，不是返回false</p>
-<pre><code>if(x &lt;= 1) return false;
-
-for(int i = 2; i &lt;= sqrt(x + 0.5); i ++){//0.5是防止根号的精度误差
-
-    if(x % i == 0) return false;
-
-}
-
-return true;
-</code></pre><p>}</p>
-<pre><code>3）时间复杂度O( √n)
-</code></pre><hr>
-<p>bool prime(int x){//判断x是不是质数，是返回true，不是返回false</p>
-<pre><code>if(x &lt;= 1) return false;
-
-for(int i = 2; i * i &lt;= x; i ++){//用乘法避免根号的精度误差
-
-    if(x % i == 0) return false;
-
-}
-
-return true;
-</code></pre><p>}</p>
-<h1 id="素数筛"><a href="#素数筛" class="headerlink" title="素数筛"></a>素数筛</h1><p>void Eratosthenes(){</p>
-<pre><code>int m=sqrt(maxn+0.5);
-
-for(int i=2;i&lt;=m;i++){
-
-    if(!vis\[i\])
-
-        for(int j=i*i;j&lt;=maxn;j+=i)
-
-            vis\[j\]=1;
-
-}
-</code></pre><p>}</p>
-<h2 id="简单应用"><a href="#简单应用" class="headerlink" title="   简单应用"></a>   简单应用</h2><h3 id="预处理每个数的所有质因数"><a href="#预处理每个数的所有质因数" class="headerlink" title="预处理每个数的所有质因数"></a><strong>预处理每个数的所有质因数</strong></h3><p>#include<cstdio></cstdio></p>
-<p>#include<vector></vector></p>
-<p>using namespace std;</p>
-<p>const int N = 100000 + 5;</p>
-<p>vector<int> prime_factor[N];</int></p>
-<p>void init(){</p>
-<pre><code>for(int i = 2; i &lt; N; i ++){
-
-    if(prime_factor\[i\].size() == 0){//如果i是质数
-
-        for(int j = i; j &lt; N; j += i){
-
-            prime\_factor\[j\].push\_back(i);
-
-        }
-
-    }
-
-}
-</code></pre><p>}</p>
-<p>int main(){</p>
-<pre><code>init();
-</code></pre><p>}</p>
-<hr>
-<h3 id="预处理每个数的所有因数"><a href="#预处理每个数的所有因数" class="headerlink" title="预处理每个数的所有因数"></a><strong>预处理每个数的所有因数</strong></h3><p>#include<cstdio></cstdio></p>
-<p>#include<vector></vector></p>
-<p>using namespace std;</p>
-<p>const int N = 100000 + 5;</p>
-<p>vector<int> factor[N];</int></p>
-<p>void init(){</p>
-<pre><code>for(int i = 2; i &lt; N; i ++){
-
-    for(int j = i; j &lt; N; j += i){
-
-        factor\[j\].push_back(i);
-
-    }
-
-}
-</code></pre><p>}</p>
-<p>int main(){</p>
-<pre><code>init();
-</code></pre><p>}</p>
-<hr>
-<h3 id="预处理每个数的质因数分解"><a href="#预处理每个数的质因数分解" class="headerlink" title="预处理每个数的质因数分解"></a><strong>预处理每个数的质因数分解</strong></h3><p>#include<cstdio></cstdio></p>
-<p>#include<vector></vector></p>
-<p>using namespace std;</p>
-<p>const int N = 100000 + 5;</p>
-<p>vector<int> prime_factor[N];</int></p>
-<p>void init(){</p>
-<pre><code>int temp;
-
-for(int i = 2; i &lt; N; i ++){
-
-    if(prime_factor\[i\].size() == 0){
-
-        for(int j = i; j &lt; N; j += i){
-
-            temp = j;
-
-            while(temp % i == 0){
-
-                prime\_factor\[j\].push\_back(i);
-
-                temp /= i;
-
-            }  
-
-        }
-
-    }
-
-}
-</code></pre><p>}</p>
-<p>int main(){</p>
-<pre><code>init();
-</code></pre><p>}</p>
-</div><hr></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-chevron-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2019 By universal42</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://universal4s.github.io">blog</a>!</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span><span></span></span><span class="footer-separator">|</span><span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script src="/js/search/algolia.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-    processEscapes: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-  },
-  CommonHTML: {
-    linebreaks: { automatic: true, width: "90% container" }
-  },
-  "HTML-CSS": { 
-    linebreaks: { automatic: true, width: "90% container" }
-  },
-  "SVG": { 
-    linebreaks: { automatic: true, width: "90% container" }
-  }
-});
-</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
-  var all = MathJax.Hub.getAllJax(), i;
-  for (i=0; i < all.length; i += 1) {
-    all[i].SourceElement().parentNode.className += ' has-jax';
-  }
-});
-</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+len=((0.5*log(2*pi*x)+x*log(x) - x)/log(10))</code></pre>
+</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2018/10/22/dynamic-programing/"> [DP] LIS		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-10-22</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/Dynamic-Programing/">Dynamic Programing</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/DP/">DP</a></span><div class="content"><h2 id="问题描述"><a class="markdownIt-Anchor" href="#问题描述"></a> 问题描述</h2>
+<p>在计算机科学中，最长递增子序列(longest increasing subsequence,简称LIS)问题是指在一个给定的数值序列中，找到一个子序列，使得这个子序列元素的数值依次递增，并且这个子序列的长度尽可能大。注意：最长递增子序列中的元素在原序列中不一定是连续的。 解决最长递增子序列问题的算法最低要求O(nlogn)。</p>
+<hr></div><a class="more" href="/2018/10/22/dynamic-programing/#more">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2018/08/03/test/"> ACM/ICPC 数论 素数		</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-08-03</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/Mathematical-Algorithms/">Mathematical Algorithms</a></span><div class="content"><h2 id="基本原理"><a class="markdownIt-Anchor" href="#基本原理"></a> 基本原理</h2>
+<p>素数，又叫质数，除了1和它本身以外不再有其他的因数。</p>
+<h2 id="代码模板"><a class="markdownIt-Anchor" href="#代码模板"></a> 代码模板</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>） 时间复杂度是O(n)</span><br><span class="line">---------------------</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">prime</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="comment">//判断x是不是质数，是返回true，不是返回false</span></span><br><span class="line">    <span class="keyword">if</span>(x &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; x; i ++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(x % i == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><a class="more" href="/2018/08/03/test/#more">Read more</a><hr></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-chevron-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2019 By universal42</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://universal4s.github.io">blog</a>!</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span><span></span></span><span class="footer-separator">|</span><span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.6.1"></script><script src="/js/fancybox.js?version=1.6.1"></script><script src="/js/sidebar.js?version=1.6.1"></script><script src="/js/copy.js?version=1.6.1"></script><script src="/js/fireworks.js?version=1.6.1"></script><script src="/js/transition.js?version=1.6.1"></script><script src="/js/scroll.js?version=1.6.1"></script><script src="/js/head.js?version=1.6.1"></script><script src="/js/search/algolia.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
   $('#nav').addClass('is-mobile')
   $('footer').addClass('is-mobile')
 }</script><div class="search-dialog" id="algolia-search"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
